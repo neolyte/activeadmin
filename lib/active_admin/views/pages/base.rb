@@ -48,11 +48,15 @@ module ActiveAdmin
         def build_page
           within body(class: body_classes) do
             div id: "wrapper" do
-              build_unsupported_browser
-              header active_admin_namespace, current_menu
-              title_bar title, action_items_for_action
-              build_page_content
-              footer active_admin_namespace
+              div id: "sdlg-navigation-panel" do
+                header active_admin_namespace, current_menu
+              end
+              div id: "sdlg-wrapper" do
+                build_unsupported_browser
+                title_bar title, action_items_for_action
+                build_page_content
+                footer active_admin_namespace
+              end
             end
           end
         end

@@ -52,6 +52,7 @@ module ActiveAdmin
       @html_options   = options[:html_options] || {}
       @should_display = options[:if]           || proc{true}
       @parent         = options[:parent]
+      @icon_bk        = options[:icon_bk]
 
       yield(self) if block_given? # Builder style syntax
     end
@@ -62,6 +63,7 @@ module ActiveAdmin
 
     attr_reader :label
     attr_reader :url
+    attr_reader :icon_bk
 
     # Don't display if the :if option passed says so
     attr_reader :should_display

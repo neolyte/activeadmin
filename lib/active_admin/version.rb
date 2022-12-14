@@ -1,3 +1,3 @@
 module ActiveAdmin
-  VERSION = '1.4.3.sdlg0'
+  VERSION = '1.4.3.sdlg1'
 end

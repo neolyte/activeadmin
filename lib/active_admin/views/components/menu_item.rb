@@ -8,13 +8,17 @@ module ActiveAdmin
       attr_reader :label
       attr_reader :url
       attr_reader :priority
+      attr_reader :icon_bk
 
       def build(item, options = {})
         super(options.merge(id: item.id))
         @label = helpers.render_in_context self, item.label
         @url = helpers.render_in_context self, item.url
         @priority = item.priority
+        @icon_bk = item.icon_bk
         @submenu = nil
+
+        @label = "#{icon_html} #{@label}".html_safe
 
         add_class "current" if item.current? assigns[:current_tab]
 
@@ -32,6 +36,10 @@ module ActiveAdmin
 
       def tag_name
         "li"
+      end
+
+      def icon_html
+        "<i class='#{@icon_bk}'></i>".html_safe if @icon_bk
       end
 
       # Sorts by priority first, then alphabetically by label if needed.
